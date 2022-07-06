@@ -1,4 +1,4 @@
-// Var questions and answer options
+// Var questions and answer options- Use array and objects
 var questions = [
     {
         question: "Which of the following is NOT a Javascript data type?",
@@ -53,5 +53,6 @@ var questions = [
             "varName = 'varName'",
             "var > varName"
         ],
+        answer: "var varName = 'varName'"
     }
 ];
