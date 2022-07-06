@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: fantasy;
+  font-size: large;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(211, 211, 211);
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 7em;
+  font-weight: 800;
+  color: rgb(0, 0, 0);
+  text-shadow: 10px 4px 0px white, 20px 5px 0px rgb(107, 107, 107);
+}
+
+#start {
+  margin-left: 50%;
+  margin-top: 5%;
+  border: none;
+  background-color: rgb(211, 211, 211);
+  font-family: fantasy;
+  height: 50px;
+  width: 80px;
+  font-size: larger;
+}
+
+#start:hover {
+  cursor: pointer;
+  transition: 1.5s;
+  color: white;
+  background-color: black;
+}
