@@ -56,3 +56,5 @@ var questions = [
         answer: "var varName = 'varName'"
     }
 ];
+
+module.exports = questions;
