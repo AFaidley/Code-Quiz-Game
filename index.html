@@ -15,18 +15,33 @@
         <p>
           Welcome to Code Quiz! Once you press start you will be asked a series
           of Code related questions. You will have time deducted for incorrect
-          answers so be careful but more importantly, have fun!
+          answers so be careful- but more importantly, have fun!
         </p>
 
-      <button id="start">Start</button>
+        <button id="start" >Start</button>
       </article>
 
       <div id="timer">Time Remaining: <span id="time">0</span></div>
+
+      <div id="qbox">
+        <h2 id="qtitle"></h2>
+        <div id="qoption"></div>
+      </div>
+
+
       <a href="./highscore.html"><button id="highscore">View Highscores</button></a>
+
+      <article class="hidden" id="end">
+        <h3>Congratulations! You have completed the quiz! Please enter your initials below to register your score.</h3>
+        <form>
+        <input type="text" id="initials" placeholder="Initials" />
+        <a href="./highscore.html"><button id="submit" >Submit</button></a>
+        </form>
+    </article>
 
     </section>
 
-    <script type="text/javascript" src="../Main/assets/js/script.js"></script>
     <script type="text/javascript" src="../Main/assets/js/questions.js"></script>
+    <script type="text/javascript" src="../Main/assets/js/script.js"></script>
   </body>
 </html>
