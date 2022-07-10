@@ -124,3 +124,22 @@ button:hover {
   color: white;
   background-color: black;
 }
+
+#submit {
+  position: absolute;
+  background-color: rgb(211, 211, 211);
+  font-family: fantasy;
+  font-size: large;
+  border: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-top: 30px;
+}
+
+
+#submit:hover {
+  cursor: pointer;
+  transition: 1.5s;
+  color: white;
+  background-color: black;
+}

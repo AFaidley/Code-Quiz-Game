@@ -66,7 +66,27 @@ function countdown() {
 
 // Function for highscores
 function highScore() {
-  
+  if (initials !== "") {
+    var highScores =
+      JSON.parse(window.localStorage.getItem("highscores"));
+      var scoreStored = {
+      score: timeLeft,
+      initials: initials
+    };
+
+    function showScore() {
+        var highScores = scoreStored;
+        var li = document.createElement("li");
+        li.textContent = `${scoreStored.name}: ${scoreStored.score}`;
+        li.setAttribute("data", i);
+    
+        highScore.appendChild(li)
+      };
+
+  }
+
+      showScore;
+
 }
 // End of game, hides questions and un-hides the end screen (initials and end message)
 function endGame() {
