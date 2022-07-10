@@ -51,11 +51,13 @@ function qClick() {
 
 function countdown() {
   var timeInterval = setInterval(() => {
-    if (timeLeft > 1 || timeLeft === 1) {
+    if (timeLeft >= 1) {
       timeChange.textContent = timeLeft;
+      if (questionI === questions.length) {
+        clearInterval(timeInterval); }
       timeLeft--;
     } else {
-      timeChange.textContent = "";
+      timeChange.textContent = 0;
       clearInterval(timeInterval);
       endGame();
     }
@@ -63,7 +65,9 @@ function countdown() {
 }
 
 // Function for highscores
-function highScore() {}
+function highScore() {
+  
+}
 // End of game, hides questions and un-hides the end screen (initials and end message)
 function endGame() {
   end.setAttribute("class", "");

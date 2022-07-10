@@ -89,7 +89,7 @@ button:hover {
 #home {
   position: absolute;
   bottom: 15%;
-  left: 50%;
+  left: 55%;
   background-color: rgb(211, 211, 211);
   font-family: fantasy;
   height: 50px;
@@ -105,3 +105,22 @@ button:hover {
   background-color: black;
 }
 
+
+#clear {
+  position: absolute;
+  bottom: 15%;
+  left: 40%;
+  background-color: rgb(211, 211, 211);
+  font-family: fantasy;
+  height: 60px;
+  width: 115px;
+  font-size: larger;
+  border: none;
+}
+
+#clear:hover {
+  cursor: pointer;
+  transition: 1.5s;
+  color: white;
+  background-color: black;
+}
