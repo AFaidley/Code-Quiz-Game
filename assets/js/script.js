@@ -1,6 +1,6 @@
 // Vars for buttons and elements, global scope
 var startBtn = document.getElementById("start");
-var highscores = document.getElementById("highscore");
+var list = document.getElementById("list");
 var submitBtn = document.getElementById("submit");
 var initials = document.getElementById("initials");
 var timeChange = document.getElementById("time");
@@ -16,17 +16,16 @@ var questionI = 0;
 function startGame() {
   start.setAttribute("class", "hidden");
   getQuestions();
+  countdown();
 }
 // Function for questions
 function getQuestions() {
   var currentQ = questions[questionI];
   qTitle.textContent = currentQ.question;
   qContent.textContent = "";
-// Displays the question
+  // Displays the question
   currentQ.options.forEach(function (choice, i) {
     var qOption = document.createElement("button");
-    qOption.setAttribute("class", "choice");
-    qOption.setAttribute("value", choice);
     qOption.textContent = i + 1 + ") " + choice;
     qOption.onclick = qClick;
     qContent.appendChild(qOption);
@@ -39,7 +38,7 @@ function qClick() {
   }
   // Goes to the next question
   questionI++;
-// Ends game when all questions have been answered or gets new question if not
+  // Ends game when all questions have been answered or gets new question if not
   if (questionI === questions.length) {
     endGame();
   } else {
@@ -54,7 +53,8 @@ function countdown() {
     if (timeLeft >= 1) {
       timeChange.textContent = timeLeft;
       if (questionI === questions.length) {
-        clearInterval(timeInterval); }
+        clearInterval(timeInterval);
+      }
       timeLeft--;
     } else {
       timeChange.textContent = 0;
@@ -64,37 +64,63 @@ function countdown() {
   }, 1000);
 }
 
-// Function for highscores
-function highScore() {
-  if (initials !== "") {
-    var highScores =
-      JSON.parse(window.localStorage.getItem("highscores"));
-      var scoreStored = {
+// Saves the highscores to local storage, highscore being the timeLeft
+function saveHighscore() {
+  var initials1 = initials.value.trim();
+  var highscore = JSON.parse(window.localStorage.getItem("highscores"));
+  if (initials1 !== "") {
+    var scores = {
       score: timeLeft,
-      initials: initials
+      user: initials1,
     };
-
-    function showScore() {
-        var highScores = scoreStored;
-        var li = document.createElement("li");
-        li.textContent = `${scoreStored.name}: ${scoreStored.score}`;
-        li.setAttribute("data", i);
-    
-        highScore.appendChild(li)
-      };
-
+    highscore.push(scores);
+    window.localStorage.setItem("highscores", JSON.stringify(highscore));
   }
-
-      showScore;
-
+  window.location.href = "./highscore.html";
 }
+
+// Shows highscore in the highscore page by creating li elements, it appends it to my ol(list)
+function showScore() {
+  var scoreList = JSON.parse(window.localStorage.getItem("highscores"));
+
+  scoreList.forEach(function (score) {
+    var li = document.createElement("li");
+    li.textContent = score.user + " - " + score.score;
+
+    list.appendChild(li);
+  });
+}
+
+//Had to change to for loop to for each as I was working with an object not an array
+
+// function showScore() {
+//   var scoreList = JSON.parse(window.localStorage.getItem("highscores"));
+
+//   for (var i = 0; i < scoreList.length; i++) {
+//     var li = document.createElement("li");
+//     li.textContent = score.user + " - " + score.score;
+
+//     list.appendChild(li);
+//   }
+// }
+
 // End of game, hides questions and un-hides the end screen (initials and end message)
+
 function endGame() {
-  end.setAttribute("class", "");
+  end.removeAttribute("class", "hidden");
   qBox.setAttribute("class", "hidden");
 }
+
 // Call functions
-startBtn.onclick = () => {
-  startGame();
-  countdown();
-};
+// Had to add functions to HTML as error kept presenting itself on highscore page.
+// startBtn.onclick = () => {
+//   startGame();
+// };
+
+// submitBtn.onclick = () => {
+//   saveHighscore();
+//   showScore();
+// };
+
+// Calling showScore function
+showScore();

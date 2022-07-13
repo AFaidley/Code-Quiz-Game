@@ -18,7 +18,7 @@
           answers so be careful- but more importantly, have fun!
         </p>
 
-        <button id="start" >Start</button>
+        <button id="start" onclick="startGame();">Start</button>
       </article>
 
       <div id="timer">Time Remaining: <span id="time">0</span></div>
@@ -35,8 +35,8 @@
         <h3>Congratulations! You have completed the quiz! Please enter your initials below to submit your score.</h3>
         <form>
         <input type="text" id="initials" placeholder="Initials" />
-        <a href="./highscore.html" title="Submit"><button id="submit" >Submit</button></a>
-        </form>
+      </form>
+      <a href="./highscore.html" title="Submit"><button id="submit" onclick="saveHighscore();">Submit</button></a>
     </article>
 
     </section>
