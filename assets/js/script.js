@@ -4,6 +4,7 @@ var list = document.getElementById("list");
 var submitBtn = document.getElementById("submit");
 var initials = document.getElementById("initials");
 var timeChange = document.getElementById("time");
+var clear = document.getElementById("clear");
 var timeLeft = 60;
 var start = document.getElementById("main");
 var end = document.getElementById("end");
@@ -67,7 +68,7 @@ function countdown() {
 // Saves the highscores to local storage, highscore being the timeLeft
 function saveHighscore() {
   var initials1 = initials.value.trim();
-  var highscore = JSON.parse(window.localStorage.getItem("highscores"));
+  var highscore = JSON.parse(window.localStorage.getItem("highscores")) || [];
   if (initials1 !== "") {
     var scores = {
       score: timeLeft,
@@ -82,7 +83,8 @@ function saveHighscore() {
 // Shows highscore in the highscore page by creating li elements, it appends it to my ol(list)
 function showScore() {
   var scoreList = JSON.parse(window.localStorage.getItem("highscores"));
-
+  
+//Had to change for-loop to forEach as I was working with an object not an array
   scoreList.forEach(function (score) {
     var li = document.createElement("li");
     li.textContent = score.user + " - " + score.score;
@@ -90,19 +92,12 @@ function showScore() {
     list.appendChild(li);
   });
 }
-
-//Had to change to for loop to for each as I was working with an object not an array
-
-// function showScore() {
-//   var scoreList = JSON.parse(window.localStorage.getItem("highscores"));
-
-//   for (var i = 0; i < scoreList.length; i++) {
-//     var li = document.createElement("li");
-//     li.textContent = score.user + " - " + score.score;
-
-//     list.appendChild(li);
-//   }
-// }
+// Function to clear highscore, had to be called in html due to error showing up otherwise
+function clearHighscores() {
+  window.localStorage.removeItem("highscores");
+// Refreshes the highscores automatically
+  window.location.reload();
+}
 
 // End of game, hides questions and un-hides the end screen (initials and end message)
 
@@ -112,15 +107,7 @@ function endGame() {
 }
 
 // Call functions
-// Had to add functions to HTML as error kept presenting itself on highscore page.
-// startBtn.onclick = () => {
-//   startGame();
-// };
-
-// submitBtn.onclick = () => {
-//   saveHighscore();
-//   showScore();
-// };
+// Had to add startGame, showScore and saveHighscore functions to HTML as error kept presenting itself on highscore page
 
 // Calling showScore function
 showScore();
