@@ -83,8 +83,8 @@ function saveHighscore() {
 // Shows highscore in the highscore page by creating li elements, it appends it to my ol(list)
 function showScore() {
   var scoreList = JSON.parse(window.localStorage.getItem("highscores"));
-  
-//Had to change for-loop to forEach as I was working with an object not an array
+
+  //Had to change for-loop to forEach as I was working with an object not an array
   scoreList.forEach(function (score) {
     var li = document.createElement("li");
     li.textContent = score.user + " - " + score.score;
@@ -95,7 +95,7 @@ function showScore() {
 // Function to clear highscore, had to be called in html due to error showing up otherwise
 function clearHighscores() {
   window.localStorage.removeItem("highscores");
-// Refreshes the highscores automatically
+  // Refreshes the highscores automatically
   window.location.reload();
 }
 
