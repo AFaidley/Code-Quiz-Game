@@ -7,7 +7,7 @@ body {
   align-items: center;
   background-color: rgb(211, 211, 211);
 }
-
+/* Title styling */
 h1 {
   display: flex;
   justify-content: center;
@@ -30,7 +30,7 @@ button:hover {
   color: white;
   background-color: black;
 }
-
+/* Hides end game text */
 .hidden {
   display: none;
 }
@@ -46,7 +46,7 @@ button:hover {
   top: 25px;
   right: 30px;
 }
-
+/* Buttons with id selectors */
 #highscore {
   position: absolute;
   top: 10px;
@@ -79,11 +79,6 @@ button:hover {
   transition: 1.5s;
   color: white;
   background-color: black;
-}
-
-#hide {
-  display: block;
-  margin-top: 15%;
 }
 
 #home {
